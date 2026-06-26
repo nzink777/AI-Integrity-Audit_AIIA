@@ -76,7 +76,8 @@ class CleanRoomHarness:
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="AIIA Clean-Room Harness")
     parser.add_argument("--target", default="http://localhost:8000/v1/completions", help="URL of the target AI API")
-    parser.add_argument("--payloads", default="public_payloads.json", help="Path to the JSON test vectors")
+    parser.add_argument("--payloads", default="../tests/public_payloads.json", help="Path to the JSON test vectors")
+    
     args = parser.parse_args()
 
     harness = CleanRoomHarness(args.target, args.payloads)
