@@ -7,7 +7,7 @@ on:
   pull_request:
     branches: [ "main" ]
   # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch: 
+  workflow_dispatch:
 
 jobs:
   execute-harness:
@@ -22,46 +22,39 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-          # stop looking for missing files
           check-latest: true
-
-          
 
       - name: Install Dependencies
         run: |
           python -m pip install --upgrade pip
-          # Add any future requirements here. Currently, requests is standard.
           pip install requests
 
       - name: Execute Clean-Room Harness
         run: |
           echo "[*] Initializing AIIA Test Sequence..."
-          # Create a directory to store the output cleanly
           mkdir -p audit_reports
-          
           # Run the public fuzzer script
           python scripts/aiia_harness.py --payloads tests/public_payloads.json
-          
           # Move the generated timestamped report into the designated folder
           mv aiia_report_*.json audit_reports/
           echo "[+] Audit sequence completed and report secured."
 
       - name: Archive Raw Audit Report
-        # This step takes the JSON output and attaches it to the GitHub Action summary for download
         uses: actions/upload-artifact@v4
         with:
           name: aiia-raw-audit-report
           path: audit_reports/aiia_report_*.json
           retention-days: 7
           if-no-files-found: error
-      - name: Configure AWS Credentials
-      uses: aws-actions/configure-aws-credentials@v4
-      with:
-        aws-access-key-id: ${{ secrets::AWS_ACCESS_KEY_ID }}
-        aws-secret-access-key: ${{ secrets::AWS_SECRET_ACCESS_KEY }}
-        aws-region: us-east-1
 
-    - name: Upload Audit Report to S3
-      run: |
-        # Replace 'audit_result.json' with your actual generated JSON file name if it's different
-        aws s3 cp audit_result.json s3://aiia-audit-reports-nzink777github-952787157330-us-east-1-an/reports/audit_result_${{ github.run_id }}.json
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+
+      - name: Upload Audit Report to S3
+        run: |
+          # Uploads any file matching the pattern from our reports directory to S3
+          aws s3 cp audit_reports/ s3://aiia-audit-reports-nzink777github-952787157330-us-east-1-an/reports/ --recursive --exclude "*" --include "aiia_report_*.json"
