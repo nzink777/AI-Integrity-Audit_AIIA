@@ -54,4 +54,14 @@ jobs:
           path: audit_reports/aiia_report_*.json
           retention-days: 7
           if-no-files-found: error
-          
+      - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v4
+      with:
+        aws-access-key-id: ${{ secrets::AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets::AWS_SECRET_ACCESS_KEY }}
+        aws-region: us-east-1
+
+    - name: Upload Audit Report to S3
+      run: |
+        # Replace 'audit_result.json' with your actual generated JSON file name if it's different
+        aws s3 cp audit_result.json s3://aiia-audit-reports-nzink777github-952787157330-us-east-1-an/reports/audit_result_${{ github.run_id }}.json
