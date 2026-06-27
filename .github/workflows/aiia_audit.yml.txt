@@ -1,0 +1,54 @@
+name: AIIA Clean-Room Execution
+
+# Controls when the workflow will run
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch: 
+
+jobs:
+  execute-harness:
+    name: Run Systemic Fuzzer
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Public Repository
+        uses: actions/checkout@v4
+
+      - name: Initialize Systemic Environment (Python)
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          # Add any future requirements here. Currently, requests is standard.
+          pip install requests
+
+      - name: Execute Clean-Room Harness
+        run: |
+          echo "[*] Initializing AIIA Test Sequence..."
+          # Create a directory to store the output cleanly
+          mkdir -p audit_reports
+          
+          # Run the public fuzzer script
+          python scripts/aiia_harness.py --payloads tests/public_payloads.json
+          
+          # Move the generated timestamped report into the designated folder
+          mv aiia_report_*.json audit_reports/
+          echo "[+] Audit sequence completed and report secured."
+
+      - name: Archive Raw Audit Report
+        # This step takes the JSON output and attaches it to the GitHub Action summary for download
+        uses: actions/upload-artifact@v4
+        with:
+          name: aiia-raw-audit-report
+          path: audit_reports/aiia_report_*.json
+          retention-days: 7
+          if-no-files-found: error
+          
