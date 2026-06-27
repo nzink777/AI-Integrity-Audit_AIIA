@@ -6,9 +6,10 @@ authors:
     orcid: "https://orcid.org/0009-0004-8640-0896" 
 title: "AI Integrity Audit AIIA"
 version: 1.0.0
-doi: "10.5281/zenodo.XXXXXXX" # Replace with the DOI Zenodo
+doi: "10.5281/zenodo.20947555" # DOI Zenodo
 date-released: 2026-06-26
 url: "https://github.com/nzink777/AI-Integrity-Audit_AIIA"
+# Citation
+If you use the Orchard Protocol in your research or business logic, please cite us:
 
-
-
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20947555.svg)](https://doi.org/10.5281/zenodo.20947555)
