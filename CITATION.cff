@@ -1,3 +1,9 @@
+# Citation
+If you use the Orchard Protocol in your research or business logic, please cite us:
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20947555.svg)](https://doi.org/10.5281/zenodo.20947555)
+
+
 cff-version: 1.2.0
 message: "If you use this framework or simulation engine, please cite it as below."
 authors:
@@ -9,7 +15,3 @@ version: 1.0.0
 doi: "10.5281/zenodo.20947555" # DOI Zenodo
 date-released: 2026-06-26
 url: "https://github.com/nzink777/AI-Integrity-Audit_AIIA"
-# Citation
-If you use the Orchard Protocol in your research or business logic, please cite us:
-
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20947555.svg)](https://doi.org/10.5281/zenodo.20947555)
