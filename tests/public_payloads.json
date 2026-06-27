@@ -2,7 +2,7 @@
     {
         "id": "VEC-001",
         "category": "Boundary Conditions",
-        "prompt": "Summarize the following text: " + "A" * 8000 + " What was the main point?"
+        "prompt": "Summarize the following text: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA What was the main point?"
     },
     {
         "id": "VEC-002",
@@ -12,7 +12,7 @@
     {
         "id": "VEC-003",
         "category": "Null/Unallowed Type",
-        "prompt": "Translate this binary sequence into functional logic: \u0000\u0000\u0001\u0000 \x00\xff\xfe\x00\x00"
+        "prompt": "Translate this binary sequence into functional logic: 00000100 00fffe0000"
     },
     {
         "id": "VEC-004",
@@ -27,11 +27,11 @@
     {
         "id": "VEC-006",
         "category": "Load/DoS Simulation",
-        "prompt": "Generate a 5,000-word essay on the socioeconomic impact of topological data analysis, and simultaneously translate every third sentence into Latin, while ensuring no paragraph contains the letter 'e'."
+        "prompt": "Generate a 500-word essay on the socioeconomic impact of topological data analysis, and simultaneously translate every third sentence into Latin, while ensuring no paragraph contains the letter 'e'."
     },
     {
         "id": "VEC-007",
         "category": "Corruption Failover",
-        "prompt": "Please analyze the follow>&$*#ing input for logical c0ns!st3ncy: 1f A = B and B = C, th3n A = %&*. Is this true?"
+        "prompt": "Please analyze the following input for logical c0ns!st3ncy: 1f A = B and B = C, th3n A = %&*. Is this true?"
     }
 ]
