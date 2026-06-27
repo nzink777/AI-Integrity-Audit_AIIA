@@ -36,3 +36,7 @@ https://orcid.org/0009-0004-8640-0896
 https://www.linkedin.com/in/natashazink
 https://github.com/nzink777
 *
+## Citation
+If you use the Orchard Protocol in your research or business logic, please cite us:
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20947555.svg)](https://doi.org/10.5281/zenodo.20947555)
